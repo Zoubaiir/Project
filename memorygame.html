@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game - Z-Streamz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        #memoryBoard { display: grid; grid-template-columns: repeat(4, 100px); gap: 5px; }
+        .memoryCard { width: 100px; height: 100px; background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 2em; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="tictactoe.html">Tic-Tac-Toe</a>
+        <a href="connectfour.html">Connect Four</a>
+        <a href="memorygame.html">Memory Game</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header>
+        <h1>Memory Game</h1>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>Play Memory Game</h2>
+            <div id="memoryBoard"></div>
+            <p id="memoryStatus"></p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Z-Streamz
+    </footer>
+
+    <script>
+        const cards = ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D'];

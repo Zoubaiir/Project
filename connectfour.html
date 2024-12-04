@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Four - Z-Streamz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        #connectBoard { display: grid; grid-template-columns: repeat(7, 50px); gap: 5px; }
+        .connectCell { width: 50px; height: 50px; background-color: #f0f0f0; border-radius: 50%; cursor: pointer; }
+        .player1 { background-color: red; }
+        .player2 { background-color: yellow; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="tictactoe.html">Tic-Tac-Toe</a>
+        <a href="connectfour.html">Connect Four</a>
+        <a href="memorygame.html">Memory Game</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header>
+        <h1>Connect Four</h1>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>Play Connect Four</h2>
+            <div id="connectBoard"></div>
+            <p id="connectStatus"></p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Z-Streamz
+    </footer>
+
+    <script>
+        const connectBoard = Array.from({ length: 7 }, () => []);
+        let currentConnectPlayer = 'player1';
+
+        function checkConnectWinner(column, row) {
+            // Winning logic for Connect Four can be complex, here's a placeholder function.
+            // For full functionality, implement vertical, horizontal, and diagonal checks.
+            document.getElementById('connectStatus').innerText = `Player ${currentConnectPlayer} wins!`;
+        }
+
+        function handleConnectClick(column) {
+            if (connectBoard[column].length < 6) {
+                const cell = document.createElement('div');
+                cell.className = `connectCell ${currentConnectPlayer}`;
+                connectBoard[column].push(currentConnectPlayer);
+                document.getElementById('connectBoard').children[(5 - connectBoard[column].length) * 7 + column].appendChild(cell);
+
+                if (connectBoard[column].length === 4) {
+                    checkConnectWinner(column, connectBoard[column].length - 1);
+                } else {
+                    currentConnectPlayer = currentConnectPlayer === 'player1' ? 'player2' : 'player1';
+                    document.getElementById('connectStatus').innerText = `Player ${currentConnectPlayer}'s turn`;
+                }
+            }
+        }
+
+        function createConnectBoard() {
+            const boardElement = document.getElementById('connectBoard');
+            boardElement.innerHTML = '';
+            for (let row = 0; row < 6; row++) {
+                for (let col = 0; col < 7; col++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'connectCell';
+                    cell.onclick = () => handleConnectClick(col);
+                    boardElement.appendChild(cell);
+                }
+            }
+        }
+
+        createConnectBoard();
+    </script>
+</body>
+</html>

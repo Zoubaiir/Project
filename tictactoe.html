@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe - Z-Streamz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Inline styles for game-specific elements */
+        #gameBoard { display: grid; grid-template-columns: repeat(3, 100px); gap: 5px; }
+        .cell { width: 100px; height: 100px; background-color: #f0f0f0; font-size: 2em; text-align: center; line-height: 100px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="tictactoe.html">Tic-Tac-Toe</a>
+        <a href="connectfour.html">Connect Four</a>
+        <a href="memorygame.html">Memory Game</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header>
+        <h1>Tic-Tac-Toe</h1>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>Play Tic-Tac-Toe</h2>
+            <div id="gameBoard"></div>
+            <p id="status"></p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Z-Streamz
+    </footer>
+
+    <script>
+        const board = Array(9).fill(null);
+        let currentPlayer = "X";
+        const cells = [];
+
+        function checkWinner() {
+            const winningCombinations = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],
+                [0, 4, 8], [2, 4, 6]
+            ];
+            for (let combination of winningCombinations) {
+                const [a, b, c] = combination;
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    document.getElementById('status').innerText = `Player ${currentPlayer} wins!`;
+                    return true;
+                }
+            }
+            if (board.every(cell => cell)) {
+                document.getElementById('status').innerText = "It's a tie!";
+                return true;
+            }
+            return false;
+        }
+
+        function handleClick(index) {
+            if (!board[index] && !checkWinner()) {
+                board[index] = currentPlayer;
+                cells[index].innerText = currentPlayer;
+                if (!checkWinner()) {
+                    currentPlayer = currentPlayer === "X" ? "O" : "X";
+                    document.getElementById('status').innerText = `Player ${currentPlayer}'s turn`;
+                }
+            }
+        }
+
+        function createBoard() {
+            const gameBoard = document.getElementById('gameBoard');
+            gameBoard.innerHTML = '';
+            board.fill(null);
+            cells.length = 0;
+            currentPlayer = "X";
+            document.getElementById('status').innerText = `Player ${currentPlayer}'s turn`;
+            for (let i = 0; i < 9; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                cell.onclick = () => handleClick(i);
+                gameBoard.appendChild(cell);
+                cells.push(cell);
+            }
+        }
+
+        createBoard();
+    </script>
+</body>
+</html>
