@@ -1,4 +1,4 @@
-#connect-four {
+#game-board {
     display: grid;
     grid-template-columns: repeat(7, 80px);
     gap: 5px;
@@ -14,12 +14,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
-.cell.player1 {
+.cell.taken.red {
     background-color: red;
+    cursor: default;
 }
 
-.cell.player2 {
+.cell.taken.yellow {
     background-color: yellow;
+    cursor: default;
+}
+
+#game-status {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
 }
