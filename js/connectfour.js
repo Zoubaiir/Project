@@ -2,18 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const ROWS = 6;
     const COLS = 7;
     const board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
-    const gameBoard = document.getElementById("game-board");
-    const statusElement = document.getElementById("game-status");
-    let currentPlayer = "red";
+    const gameBoard = document.getElementById("connectBoard");
+    const statusElement = document.getElementById("connectStatus");
+    let currentPlayer = "player1";
     let gameOver = false;
 
-    // Create game board
+    // Create the board visually
     function createBoard() {
         gameBoard.innerHTML = "";
         for (let row = 0; row < ROWS; row++) {
             for (let col = 0; col < COLS; col++) {
                 const cell = document.createElement("div");
-                cell.className = "cell";
+                cell.className = "connectCell";
                 cell.dataset.row = row;
                 cell.dataset.col = col;
                 cell.addEventListener("click", () => handleMove(col));
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Handle a player's move
+    // Handle player move
     function handleMove(col) {
         if (gameOver) return;
 
@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let row = ROWS - 1; row >= 0; row--) {
             if (!board[row][col]) {
                 board[row][col] = currentPlayer;
-                const cell = document.querySelector(`.cell[data-row='${row}'][data-col='${col}']`);
-                cell.classList.add("taken", currentPlayer);
+                const cell = document.querySelector(`.connectCell[data-row='${row}'][data-col='${col}']`);
+                cell.classList.add(currentPlayer);
 
                 if (checkWin(row, col)) {
                     gameOver = true;
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     gameOver = true;
                     statusElement.textContent = "It's a TIE!";
                 } else {
-                    currentPlayer = currentPlayer === "red" ? "yellow" : "red";
+                    currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
                     statusElement.textContent = `Current Player: ${currentPlayer.toUpperCase()}`;
                 }
                 return;
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Check for a win condition
+    // Check for win conditions
     function checkWin(row, col) {
         const directions = [
             { r: 0, c: 1 }, // Horizontal
@@ -60,10 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
         for (const { r, c } of directions) {
             let count = 1;
 
-            // Check in one direction
+            // Count in one direction
             count += countInDirection(row, col, r, c);
 
-            // Check in the opposite direction
+            // Count in the opposite direction
             count += countInDirection(row, col, -r, -c);
 
             if (count >= 4) return true;
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return false;
     }
 
-    // Count consecutive pieces in a given direction
+    // Count consecutive pieces in one direction
     function countInDirection(row, col, rowDir, colDir) {
         let count = 0;
         let newRow = row + rowDir;
@@ -93,6 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return count;
     }
 
-    // Initialize the game board
+    // Initialize the game
     createBoard();
 });
