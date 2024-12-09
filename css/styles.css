@@ -110,26 +110,32 @@ footer {
 /* Connect Four Board */
 #connect-four-board {
     display: grid;
-    grid-template-columns: repeat(7, 50px);
-    gap: 5px;
+    grid-template-columns: repeat(7, 50px); /* Ensure 7 columns */
+    gap: 5px; /* Spacing between cells */
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 #connect-four-board .connectCell {
-    width: 50px;
-    height: 50px;
-    background-color: #f0f0f0;
-    border-radius: 50%;
+    width: 50px; /* Cell width */
+    height: 50px; /* Cell height */
+    background-color: #f0f0f0; /* Default color */
+    border-radius: 50%; /* Make them round like discs */
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
 }
 
+/* Active Player's Disc Color */
 #connect-four-board .connectCell.red {
-    background-color: #f10a0a;
+    background-color: #f10a0a; /* Red disc */
 }
 
 #connect-four-board .connectCell.yellow {
-    background-color: #ffd700;
+    background-color: #ffd700; /* Yellow disc */
 }
 
 /* Memory Game */
