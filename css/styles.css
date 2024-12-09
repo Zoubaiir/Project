@@ -102,7 +102,7 @@ footer {
     cursor: not-allowed;
 }
 
-/* Connect Four Board */
+/* CSS for Connect Four */
 #connect-four-board {
     display: grid;
     grid-template-columns: repeat(7, 50px);
@@ -111,7 +111,7 @@ footer {
     margin-top: 20px;
 }
 
-#connect-four-board .connectCell {
+.connectCell {
     width: 50px;
     height: 50px;
     background-color: #f0f0f0;
@@ -119,13 +119,21 @@ footer {
     cursor: pointer;
 }
 
-#connect-four-board .connectCell.red {
+.connectCell.red {
     background-color: #f10a0a;
 }
 
-#connect-four-board .connectCell.yellow {
+.connectCell.yellow {
     background-color: #ffd700;
 }
+
+/* Game Status */
+#connect-four-status {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
 
 /* Memory Game */
 #memory-game-board {
