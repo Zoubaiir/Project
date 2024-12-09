@@ -40,6 +40,11 @@ footer {
 
 /* Navbar */
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     border-bottom: 3px solid #f10a0a;
 }
 
@@ -102,7 +107,7 @@ footer {
     cursor: not-allowed;
 }
 
-/* CSS for Connect Four */
+/* Connect Four Board */
 #connect-four-board {
     display: grid;
     grid-template-columns: repeat(7, 50px);
@@ -111,7 +116,7 @@ footer {
     margin-top: 20px;
 }
 
-.connectCell {
+#connect-four-board .connectCell {
     width: 50px;
     height: 50px;
     background-color: #f0f0f0;
@@ -119,21 +124,13 @@ footer {
     cursor: pointer;
 }
 
-.connectCell.red {
+#connect-four-board .connectCell.red {
     background-color: #f10a0a;
 }
 
-.connectCell.yellow {
+#connect-four-board .connectCell.yellow {
     background-color: #ffd700;
 }
-
-/* Game Status */
-#connect-four-status {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
 
 /* Memory Game */
 #memory-game-board {
@@ -158,6 +155,28 @@ footer {
 
 .memoryCard.flipped {
     background-color: #81c784;
+}
+
+/* Play Again Button */
+button {
+    background-color: #f10a0a;
+    border-color: #f10a0a;
+}
+
+button:hover {
+    background-color: #d00909;
+    border-color: #d00909;
+}
+
+/* Footer Always at the Bottom */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto; /* Push the footer to the bottom */
 }
 
 /* Responsive Design */
