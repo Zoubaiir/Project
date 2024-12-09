@@ -1,6 +1,7 @@
 /* styles.css */
 /* Author: Zoubair Belfki
-   Course: 117-001
+   Course: IS117-001
+   Description: Shared CSS styles for Z-Streamz project */
 
 /* General Styles */
 body {
@@ -80,46 +81,79 @@ header {
     color: #f10a0a;
 }
 
-/* Tic-Tac-Toe, Connect Four, and Memory Game Boards */
-#tic-tac-toe-board,
-#connect-four-board,
-#memory-game-board {
-    background-color: #1c1c1c;
-    border: 2px solid #f10a0a;
-    border-radius: 5px;
-    padding: 10px;
+/* Tic-Tac-Toe Board */
+#tic-tac-toe-board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 5px;
+    justify-content: center;
+    margin: 0 auto;
 }
 
-/* Game Cells */
-.cell,
-.connectCell {
+#tic-tac-toe-board .cell {
+    width: 100px;
+    height: 100px;
     background-color: #d3d3d3;
     border: 2px solid #000000;
-    border-radius: 5px;
-    transition: background-color 0.2s;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+    cursor: pointer;
+    color: #000000;
 }
 
-.cell:hover,
-.connectCell:hover {
-    background-color: #f10a0a;
+#tic-tac-toe-board .cell.taken {
+    cursor: not-allowed;
+}
+
+/* Connect Four Board */
+#connect-four-board {
+    display: grid;
+    grid-template-columns: repeat(7, 50px);
+    gap: 5px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#connect-four-board .connectCell {
+    width: 50px;
+    height: 50px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
     cursor: pointer;
 }
 
-.cell.matched {
+#connect-four-board .connectCell.red {
     background-color: #f10a0a;
-    color: white;
 }
 
-.cell.taken.red,
-.connectCell.red {
-    background-color: #f10a0a;
-    color: white;
-}
-
-.cell.taken.yellow,
-.connectCell.yellow {
+#connect-four-board .connectCell.yellow {
     background-color: #ffd700;
-    color: black;
+}
+
+/* Memory Game */
+#memory-game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.memoryCard {
+    width: 100px;
+    height: 100px;
+    background-color: #c3c3c3;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.memoryCard.flipped {
+    background-color: #81c784;
 }
 
 /* Responsive Design */
