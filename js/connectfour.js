@@ -1,4 +1,4 @@
-// connectfour.js
+// JavaScript for Connect Four
 document.addEventListener("DOMContentLoaded", () => {
     const ROWS = 6;
     const COLS = 7;
@@ -10,14 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Create the game board
     function createBoard() {
-        boardElement.innerHTML = "";
+        boardElement.innerHTML = ""; // Clear the board
         for (let row = 0; row < ROWS; row++) {
             for (let col = 0; col < COLS; col++) {
                 const cell = document.createElement("div");
-                cell.className = "border border-dark d-flex align-items-center justify-content-center";
-                cell.style.width = "50px";
-                cell.style.height = "50px";
-                cell.style.backgroundColor = "#d3d3d3";
+                cell.className = "connectCell";
                 cell.dataset.row = row;
                 cell.dataset.col = col;
                 cell.addEventListener("click", () => handleMove(col));
@@ -30,12 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleMove(col) {
         if (gameOver) return;
 
+        // Find the lowest available row in the selected column
         for (let row = ROWS - 1; row >= 0; row--) {
             if (!board[row][col]) {
                 board[row][col] = currentPlayer;
                 const cell = document.querySelector(`div[data-row='${row}'][data-col='${col}']`);
-                cell.style.backgroundColor = currentPlayer;
+                cell.classList.add(currentPlayer);
 
+                // Check if the player wins
                 if (checkWinner(row, col)) {
                     gameOver = true;
                     statusElement.textContent = `Player ${currentPlayer.toUpperCase()} Wins!`;
@@ -91,16 +90,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Reset the game
     function resetConnectFour() {
+        // Reset the board array to null values
         for (let row = 0; row < ROWS; row++) {
             for (let col = 0; col < COLS; col++) {
                 board[row][col] = null;
             }
         }
-        gameOver = false;
+        // Clear all visual indicators on the game board
+        const cells = document.querySelectorAll(".connectCell");
+        cells.forEach(cell => cell.classList.remove("red", "yellow"));
+
+        // Reset game variables
         currentPlayer = "red";
+        gameOver = false;
         statusElement.textContent = "Current Player: Red";
+
         createBoard();
     }
 
+    // Initialize the game board
     createBoard();
+
+    // Attach event to reset button
+    const resetButton = document.getElementById("reset-button");
+    resetButton.addEventListener("click", resetConnectFour);
 });
