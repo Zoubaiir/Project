@@ -1,51 +1,155 @@
+/* styles.css */
+/* Author: [Your Name]
+   Course: [Course Number]
+   Description: Shared CSS styles for Z-Streamz project */
+
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
-    color: #333;
+    background-color: #000000;
+    color: white;
     margin: 0;
     padding: 0;
 }
 
-header {
-    background-color: #0078d7;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
+h1, h2, h5 {
+    color: #f10a0a;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2rem;
+/* Navbar */
+.navbar {
+    border-bottom: 3px solid #f10a0a;
 }
 
-nav {
-    background-color: #005a9e;
-    padding: 10px 20px;
-    text-align: center;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
+.navbar-brand {
     font-weight: bold;
 }
 
-nav a:hover {
-    text-decoration: underline;
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    margin: 0 10px;
 }
 
-footer {
-    background-color: #0078d7;
+.navbar-nav .dropdown-menu {
+    background-color: #000000;
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: #f10a0a;
     color: white;
-    text-align: center;
-    padding: 10px 20px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }
 
-main {
-    padding: 20px;
-    text-align: center;
+/* Footer */
+footer {
+    background-color: #000000;
+    color: white;
+    border-top: 3px solid #f10a0a;
+    font-size: 0.9rem;
+}
+
+/* Hero Section */
+header {
+    background: linear-gradient(to bottom, #f10a0a, #000000);
+    color: white;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+/* Buttons */
+.btn-danger {
+    background-color: #f10a0a;
+    border-color: #f10a0a;
+}
+
+.btn-danger:hover {
+    background-color: #d00909;
+    border-color: #d00909;
+}
+
+/* Game Cards (Home Page) */
+.card {
+    background-color: #1c1c1c;
+    color: white;
+    border: 1px solid #f10a0a;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+.card-title {
+    color: #f10a0a;
+}
+
+/* Tic-Tac-Toe, Connect Four, and Memory Game Boards */
+#tic-tac-toe-board,
+#connect-four-board,
+#memory-game-board {
+    background-color: #1c1c1c;
+    border: 2px solid #f10a0a;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Game Cells */
+.cell,
+.connectCell {
+    background-color: #d3d3d3;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.cell:hover,
+.connectCell:hover {
+    background-color: #f10a0a;
+    cursor: pointer;
+}
+
+.cell.matched {
+    background-color: #f10a0a;
+    color: white;
+}
+
+.cell.taken.red,
+.connectCell.red {
+    background-color: #f10a0a;
+    color: white;
+}
+
+.cell.taken.yellow,
+.connectCell.yellow {
+    background-color: #ffd700;
+    color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        font-size: 0.9rem;
+    }
+
+    header {
+        font-size: 0.9rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #tic-tac-toe-board,
+    #connect-four-board,
+    #memory-game-board {
+        width: 100%;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
 }
