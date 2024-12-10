@@ -16,26 +16,7 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-}
-
-/* Header and Content */
-header {
-    background: linear-gradient(to bottom, #f10a0a, #000000);
-    color: white;
-    text-shadow: 1px 1px 2px #000000;
-}
-
-main {
-    flex-grow: 1;
-}
-
-footer {
-    background-color: #000000;
-    color: white;
-    border-top: 3px solid #f10a0a;
-    font-size: 0.9rem;
-    text-align: center;
-    padding: 10px;
+    padding-top: 70px; /* Ensure content starts below the fixed navbar */
 }
 
 /* Navbar */
@@ -44,7 +25,7 @@ footer {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1050; /* Ensure it appears above other content */
+    z-index: 1050; /* Ensures navbar and dropdown stay above all elements */
     border-bottom: 3px solid #f10a0a;
 }
 
@@ -59,7 +40,7 @@ footer {
 
 .navbar-nav .dropdown-menu {
     background-color: #000000;
-    z-index: 1050; /* Ensure dropdown menu appears above other elements */
+    z-index: 1050; /* Ensures dropdown stays above game boards */
 }
 
 .navbar-nav .dropdown-item:hover {
@@ -67,9 +48,22 @@ footer {
     color: white;
 }
 
-/* Add padding below the navbar to prevent overlap */
-body {
-    padding-top: 70px; /* Adjust to match navbar height */
+/* Header */
+header {
+    background: linear-gradient(to bottom, #f10a0a, #000000);
+    color: white;
+    text-shadow: 1px 1px 2px #000000;
+}
+
+/* Footer */
+footer {
+    background-color: #000000;
+    color: white;
+    border-top: 3px solid #f10a0a;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
 }
 
 /* Game Cards (Home Page) */
@@ -95,7 +89,9 @@ body {
     gap: 5px;
     justify-content: center;
     margin: 0 auto;
-    z-index: 1; /* Ensure it doesn't overlap navbar dropdown */
+    background-color: #000000; /* Black background for board */
+    padding: 10px;
+    border: 2px solid #f10a0a;
 }
 
 #tic-tac-toe-board .cell {
@@ -121,8 +117,9 @@ body {
     gap: 5px; /* Spacing between cells */
     justify-content: center;
     margin-top: 20px;
-    margin-bottom: 50px;
-    z-index: 1; /* Ensure it doesn't overlap navbar dropdown */
+    background-color: #000000; /* Black background for board */
+    padding: 10px;
+    border: 2px solid #f10a0a;
 }
 
 #connect-four-board .connectCell {
@@ -137,6 +134,7 @@ body {
     transition: background-color 0.3s ease;
 }
 
+/* Active Player's Disc Color */
 #connect-four-board .connectCell.red {
     background-color: #f10a0a; /* Red disc */
 }
@@ -152,6 +150,9 @@ body {
     gap: 10px;
     justify-content: center;
     margin-top: 20px;
+    background-color: #000000; /* Black background for board */
+    padding: 10px;
+    border: 2px solid #f10a0a;
 }
 
 .memoryCard {
@@ -179,17 +180,6 @@ button {
 button:hover {
     background-color: #d00909;
     border-color: #d00909;
-}
-
-/* Footer Always at the Bottom */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-footer {
-    margin-top: auto; /* Push the footer to the bottom */
 }
 
 /* Responsive Design */
