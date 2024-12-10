@@ -1,3 +1,4 @@
+/* DEVELOPER Zoubair Belfki, IS117-001, Fall 2024 */
 // JavaScript for Connect Four
 document.addEventListener("DOMContentLoaded", () => {
     const ROWS = 6;
