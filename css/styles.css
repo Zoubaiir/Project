@@ -44,7 +44,7 @@ footer {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 1050; /* Ensure it appears above other content */
     border-bottom: 3px solid #f10a0a;
 }
 
@@ -59,11 +59,17 @@ footer {
 
 .navbar-nav .dropdown-menu {
     background-color: #000000;
+    z-index: 1050; /* Ensure dropdown menu appears above other elements */
 }
 
 .navbar-nav .dropdown-item:hover {
     background-color: #f10a0a;
     color: white;
+}
+
+/* Add padding below the navbar to prevent overlap */
+body {
+    padding-top: 70px; /* Adjust to match navbar height */
 }
 
 /* Game Cards (Home Page) */
@@ -89,6 +95,7 @@ footer {
     gap: 5px;
     justify-content: center;
     margin: 0 auto;
+    z-index: 1; /* Ensure it doesn't overlap navbar dropdown */
 }
 
 #tic-tac-toe-board .cell {
@@ -111,14 +118,16 @@ footer {
 #connect-four-board {
     display: grid;
     grid-template-columns: repeat(7, 50px); /* Ensure 7 columns */
-    gap: 5px;
+    gap: 5px; /* Spacing between cells */
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 50px;
+    z-index: 1; /* Ensure it doesn't overlap navbar dropdown */
 }
 
 #connect-four-board .connectCell {
-    width: 50px;
-    height: 50px;
+    width: 50px; /* Cell width */
+    height: 50px; /* Cell height */
     background-color: #f0f0f0; /* Default color */
     border-radius: 50%;
     cursor: pointer;
