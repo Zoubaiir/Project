@@ -136,6 +136,10 @@ footer {
     grid-template-columns: repeat(4, 80px); /* 80px cards */
     gap: 10px;
     justify-content: center;
+    margin-top: 20px;
+    background-color: #000000;
+    padding: 10px;
+    border: 2px solid #f10a0a;
 }
 
 .memoryCard {
@@ -147,23 +151,13 @@ footer {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 1.2rem; /* Adjust font size for smaller cards */
+    font-size: 1.2rem;
 }
 
 .memoryCard.flipped {
     background-color: #81c784;
 }
 
-/* Play Again Button */
-button {
-    background-color: #f10a0a;
-    border-color: #f10a0a;
-}
-
-button:hover {
-    background-color: #d00909;
-    border-color: #d00909;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
