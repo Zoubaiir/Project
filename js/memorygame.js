@@ -1,3 +1,4 @@
+/* DEVELOPER Zoubair Belfki, IS117-001, Fall 2024 */
 document.addEventListener("DOMContentLoaded", () => {
     const cardsArray = [
         { name: 'apple', img: 'apple.png' },
