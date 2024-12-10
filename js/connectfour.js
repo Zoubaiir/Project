@@ -2,15 +2,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     const ROWS = 6;
     const COLS = 7;
-    const board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
+    let board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
     const boardElement = document.getElementById("connect-four-board");
     const statusElement = document.getElementById("connect-four-status");
+    const resetButton = document.getElementById("reset-button");
     let currentPlayer = "red";
     let gameOver = false;
 
     // Create the game board
     function createBoard() {
-        boardElement.innerHTML = ""; // Clear the board
+        boardElement.innerHTML = ""; // Clear the board visually
         for (let row = 0; row < ROWS; row++) {
             for (let col = 0; col < COLS; col++) {
                 const cell = document.createElement("div");
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const cell = document.querySelector(`div[data-row='${row}'][data-col='${col}']`);
                 cell.classList.add(currentPlayer);
 
-                // Check if the player wins
+                // Check for a winner or tie
                 if (checkWinner(row, col)) {
                     gameOver = true;
                     statusElement.textContent = `Player ${currentPlayer.toUpperCase()} Wins!`;
@@ -89,29 +90,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Reset the game
-    function resetConnectFour() {
-        // Reset the board array to null values
-        for (let row = 0; row < ROWS; row++) {
-            for (let col = 0; col < COLS; col++) {
-                board[row][col] = null;
-            }
-        }
-        // Clear all visual indicators on the game board
-        const cells = document.querySelectorAll(".connectCell");
-        cells.forEach(cell => cell.classList.remove("red", "yellow"));
-
-        // Reset game variables
-        currentPlayer = "red";
+    function resetGame() {
+        board = Array.from({ length: ROWS }, () => Array(COLS).fill(null)); // Clear the board state
         gameOver = false;
+        currentPlayer = "red";
         statusElement.textContent = "Current Player: Red";
-
         createBoard();
     }
 
-    // Initialize the game board
+    // Initialize the game
     createBoard();
 
-    // Attach event to reset button
-    const resetButton = document.getElementById("reset-button");
-    resetButton.addEventListener("click", resetConnectFour);
+    // Attach reset button functionality
+    resetButton.addEventListener("click", resetGame);
 });
