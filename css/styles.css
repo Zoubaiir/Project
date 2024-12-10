@@ -1,6 +1,6 @@
 /* styles.css */
-/* Author: Zoubair Belfki
-   Course: IS117-001
+/* Author: [Your Name]
+   Course: [Course Number]
    Description: Shared CSS styles for Z-Streamz project */
 
 /* General Styles */
@@ -66,42 +66,34 @@ footer {
     margin-top: auto;
 }
 
-/* Game Cards (Home Page) */
-.card {
-    background-color: #1c1c1c;
-    color: white;
-    border: 1px solid #f10a0a;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    transition: transform 0.2s;
-}
-
-.card-title {
-    color: #f10a0a;
+/* Game Boards */
+#tic-tac-toe-board,
+#connect-four-board,
+#memory-game-board {
+    background-color: #000000; /* Black background for all game boards */
+    padding: 10px;
+    border: 2px solid #f10a0a;
+    z-index: 1; /* Ensure game boards are below the navbar */
+    position: relative;
+    margin: 20px auto; /* Center the boards */
 }
 
 /* Tic-Tac-Toe Board */
 #tic-tac-toe-board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
+    grid-template-columns: repeat(3, 75px); /* 75px cells */
     gap: 5px;
     justify-content: center;
-    margin: 0 auto;
-    background-color: #000000; /* Black background for board */
-    padding: 10px;
-    border: 2px solid #f10a0a;
 }
 
 #tic-tac-toe-board .cell {
-    width: 100px;
-    height: 100px;
+    width: 75px; /* Smaller width */
+    height: 75px; /* Smaller height */
     background-color: #d3d3d3;
     border: 2px solid #000000;
-    font-size: 2rem;
+    font-size: 1.5rem; /* Adjust font size for smaller cells */
     text-align: center;
-    line-height: 100px;
+    line-height: 75px;
     cursor: pointer;
     color: #000000;
 }
@@ -113,19 +105,15 @@ footer {
 /* Connect Four Board */
 #connect-four-board {
     display: grid;
-    grid-template-columns: repeat(7, 50px); /* Ensure 7 columns */
+    grid-template-columns: repeat(7, 40px); /* 40px cells */
     gap: 5px; /* Spacing between cells */
     justify-content: center;
-    margin-top: 20px;
-    background-color: #000000; /* Black background for board */
-    padding: 10px;
-    border: 2px solid #f10a0a;
 }
 
 #connect-four-board .connectCell {
-    width: 50px; /* Cell width */
-    height: 50px; /* Cell height */
-    background-color: #f0f0f0; /* Default color */
+    width: 40px; /* Smaller width */
+    height: 40px; /* Smaller height */
+    background-color: #f0f0f0;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -134,7 +122,6 @@ footer {
     transition: background-color 0.3s ease;
 }
 
-/* Active Player's Disc Color */
 #connect-four-board .connectCell.red {
     background-color: #f10a0a; /* Red disc */
 }
@@ -146,25 +133,21 @@ footer {
 /* Memory Game */
 #memory-game-board {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
+    grid-template-columns: repeat(4, 80px); /* 80px cards */
     gap: 10px;
     justify-content: center;
-    margin-top: 20px;
-    background-color: #000000; /* Black background for board */
-    padding: 10px;
-    border: 2px solid #f10a0a;
 }
 
 .memoryCard {
-    width: 100px;
-    height: 100px;
+    width: 80px; /* Smaller width */
+    height: 80px; /* Smaller height */
     background-color: #c3c3c3;
     border: 2px solid #333;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Adjust font size for smaller cards */
 }
 
 .memoryCard.flipped {
