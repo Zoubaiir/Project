@@ -1,3 +1,4 @@
+/* DEVELOPER Zoubair Belfki, IS117-001, Fall 2024 */
 // tictactoe.js
 document.addEventListener("DOMContentLoaded", () => {
     const boardElement = document.getElementById("tic-tac-toe-board");
